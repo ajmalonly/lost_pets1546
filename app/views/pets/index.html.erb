@@ -1,0 +1,28 @@
+<div class="container py-5">
+  <h1 class="mt-4 text-center text-primary" style="font-family: Arial, sans-serif; font-size: 2.5rem;">Lost Pets 🐕😺🐢🐍🐇</h1>
+  <div class="mt-5 text-center">
+    <%= link_to "+ Add a lost Pet 🐾", new_pet_path, class: "btn btn-success" %>
+  </div>
+  <ul class="list-group mt-5">
+    <% @pets.each_with_index do |pet, index| %>
+      <li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: <%= index.even? ? '#f0f0f0' : '#e0e0e0'; %>; border-color: #ddd; border-radius: 10px; margin-bottom: 10px; padding: 15px; animation: fadeInUp 0.5s ease-out <%= index * 0.1 %>s;">
+        <p class="mb-0" style="font-family: Arial, sans-serif; font-size: 1.2rem; font-weight: bold;">
+          <%= link_to "#{pet.name} - Found #{pet.found_days_ago}", pet, class: "btn btn-link text-dark", style: "text-decoration: none;" %> <span style="font-size: 1.5rem;">🐾</span>
+        </p>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<style>
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
